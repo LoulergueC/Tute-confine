@@ -17,6 +17,12 @@ chrome.storage.sync.get(['dark'], function(result) {
   };
 });
 
+chrome.storage.sync.get(['truedark'], function(result) {
+  if(result.truedark == "true") {
+    $('#truedark').attr("checked", "checked");
+  };
+});
+
 
 $('#Feedback').click(function() {
     event.preventDefault();
@@ -50,5 +56,14 @@ $('#dark').change(function() {
   }
   else {
     chrome.storage.sync.set({dark: "false"});
+  }
+});
+
+$('#truedark').change(function() {
+  if(this.checked) {
+    chrome.storage.sync.set({truedark: "true"}); 
+  }
+  else {
+    chrome.storage.sync.set({truedark: "false"});
   }
 });
