@@ -1,0 +1,158 @@
+<div id="title">
+  <h1>Configuration de l'extension</h1>
+</div>
+
+<ul>
+  <li>
+    <p>Compte &agrave; rebours fixe</p>
+    
+    <label class="switch">
+      <input type="checkbox" id="timer">
+      <span class="slider round"></span>
+    </label>
+  </li>
+  <li>
+    <p>QCS surlign&eacute;</p>
+    
+    <label class="switch">
+      <input type="checkbox" id="qcs">
+      <span class="slider round"></span>
+    </label>
+  </li>
+  <li>
+    <p>Dark mode</p>
+    
+    <label class="switch">
+      <input type="checkbox" id="dark">
+      <span class="slider round"></span>
+    </label>
+  </li>
+  <br/>
+  <li>
+    <p>Une question, une id&eacute;e d'am&eacute;lioration, un probl&egrave;me ?</p>
+    <button id="Feedback">Fais-le moi savoir !</button>
+  </li>
+</ul>
+
+
+<style>
+  html {
+    background-color: rgb(32,33,36);
+    color: white;
+    border-radius: 5px;
+    width: auto;
+    min-width: 400px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #title {
+    background-color: #292a2d;
+    padding: 10px 20px;
+    margin: 0;
+  }
+  
+  ul {
+    padding: 0;
+  }
+  
+  li {
+    vertical-align: middle;
+  }
+  
+  p {
+    display: inline-block;
+    margin: 0;
+    margin-right: 20px;
+    line-height: 25px;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: -5px;
+    transition: .2s;
+  }
+  button:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+  }
+  
+/* The switch - the box around the slider */
+.switch {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+  
+  select {
+    margin-bottom: 10px;
+  }
+</style>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popup.js"></script>

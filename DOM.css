@@ -1,0 +1,8 @@
+.QCS {
+  background-color: magenta;
+  padding: 5px;
+}
+.dark_white {
+  background-color: rgb(24,24,27) !important;
+  color: #FDFCFC;
+}
