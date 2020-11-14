@@ -23,12 +23,6 @@ chrome.storage.sync.get(['truedark'], function(result) {
   };
 });
 
-chrome.storage.sync.get(['doc'], function(result) {
-  if(result.doc == "true") {
-    $('#doc').attr("checked", "checked");
-  };
-});
-
 
 $('#Feedback').click(function() {
     event.preventDefault();
@@ -71,14 +65,5 @@ $('#truedark').change(function() {
   }
   else {
     chrome.storage.sync.set({truedark: "false"});
-  }
-});
-
-$('#doc').change(function() {
-  if(this.checked) {
-    chrome.storage.sync.set({doc: "true"}); 
-  }
-  else {
-    chrome.storage.sync.set({doc: "false"});
   }
 });
