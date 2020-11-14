@@ -4,18 +4,18 @@ var w = timerel.parent().width();
 
 function timer() {
   chrome.storage.sync.get(['timer'], function(result) {
-    if(result.timer == "true") {
+    if(result.timer === "true") {
       timerel.css({"position": "fixed"});
       timerwidth();
     } else {
       timerel.css({"position": "relative"});
-    };
+    }
   });
 }  
 
 function qcs() {
   chrome.storage.sync.get(['qcs'], function(result) {
-    if(result.qcs == "true") {
+    if(result.qcs === "true") {
       $(".bold").each(function() {
         var html = $(this).html();
         var newhtml = html.replace("QCS", "<span class='QCS'>QCS</span>");
@@ -27,13 +27,13 @@ function qcs() {
         var newhtml = html.replace("<span class='QCS'>QCS</span>", "QCS");
         $(this).html(newhtml);
       });
-    };
+    }
   });
 }
 
 function dark() {
   chrome.storage.sync.get(['dark'], function(result) {
-    if(result.dark == "true") {
+    if(result.dark === "true") {
         timerel.css({"background-color": "rgb(25,25,25)", "color": "rgba(255,255,255,.6)"});
         $('#terminerPassageColle').children().children().css({"background-color": "#e74c3c"});
         $('body').css({"background-color": "rgb(26,26,28)"});
@@ -54,7 +54,7 @@ function dark() {
   
 function truedark() {  
   chrome.storage.sync.get(['truedark'], function(result) {
-    if(result.truedark == "true") {
+    if(result.truedark === "true") {
 
         $('body').append('<style id="navstyle">nav, footer{background-color: #18181b !important}</style>');
 
@@ -65,29 +65,63 @@ function truedark() {
   });
 }
 
+function doc() {
+  chrome.storage.sync.get(['doc'], function(result) {
+    if(result.doc === "true") {
+
+        $(".card-title-small:contains('Classement')").each(function() {
+          var parent = $(this).parents(".col.s12.m4.l4");
+          parent.hide();
+        });
+
+        $('.row').each(function() {
+          if ($(this).height() == 0) {
+            $(this).addClass('row-noContent')
+          }
+        });
+
+    } else {
+
+        $(".card-title-small:contains('Classement')").each(function() {
+          var parent = $(this).parents(".col.s12.m4.l4");
+          parent.show();
+        });
+
+        $('.row-noContent').each(function() {
+          $(this).removeClass('row-noContent')
+        });
+    }
+  });
+}
+
 /* Initiate all options if checked on first load */
 timer();
 qcs();
 dark();
 truedark();
+doc();
 
 /* Lien entre changement d'option et affichage sur la page */
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if (request.greeting == "timer") {
+    if (request.greeting === "timer") {
       timer();
     }
     
-    if (request.greeting == "qcs") {
+    if (request.greeting === "qcs") {
       qcs();
     }
     
-    if (request.greeting == "dark") {
+    if (request.greeting === "dark") {
       dark();
     }
     
-    if (request.greeting == "truedark") {
+    if (request.greeting === "truedark") {
       truedark();
+    }
+    
+    if (request.greeting === "doc") {
+      doc();
     }
 });
 

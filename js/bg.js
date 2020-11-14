@@ -32,5 +32,13 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
           }
         });
      }
+    
+    if(key === 'doc') {
+       chrome.tabs.query({url: "https://pass.tharmo.tutotours.fr/*"}, function(tabs) {
+          for (var i=0; i<tabs.length; ++i) {
+              chrome.tabs.sendMessage(tabs[i].id, {greeting: "doc"});
+          }
+        });
+     }
   }
 })
