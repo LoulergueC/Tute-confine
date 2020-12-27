@@ -38,8 +38,12 @@ function dark() {
         $('#terminerPassageColle').children().children().css({"background-color": "#e74c3c"});
         $('body').css({"background-color": "rgb(26,26,28)"});
 
-        $('body').append('<style id="cardstyle">.card{background-color: rgb(24,24,27);color: rgba(255,255,255,.6);}</style>');
+        $('body').append('<style id="cardstyle">.card-panel{background-color: rgb(24,24,27);color: rgba(255,255,255,.6);}</style>');
 
+        // Fix white background on white text and transparent png with black content
+        $('.card-panel *:not("button")').css({"background" : "transparent"});
+        $('.card-panel img').css({"background-color" : "rgba(255,255,255,.6)", "border-radius" : "5px"});
+        
         $('.white').addClass("dark_white").removeClass("white");
     } else {
         timerel.css({"background-color": "white", "color": "black"});
